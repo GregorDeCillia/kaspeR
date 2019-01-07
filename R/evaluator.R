@@ -5,17 +5,7 @@ evaluator <- R6::R6Class(
   "evaluator",
   public = list(
     initialize = function() {
-      safe_f <- c(
-        getGroupMembers("Math"),
-        getGroupMembers("Arith"),
-        getGroupMembers("Compare"),
-        "<-", "{", "("
-      )
-      safe_env <- new.env(parent = emptyenv())
-      for (f in safe_f) {
-        safe_env[[f]] <- get(f, "package:base")
-      }
-      private$save_env <- safe_env
+      private$save_env <- createSafeEnvironment()
     },
     eval = function(str) {
       if (is.expression(str))

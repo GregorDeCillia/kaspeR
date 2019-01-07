@@ -1,9 +1,9 @@
 
 <!-- icon: https://iconscout.com/icon/hot-soup-3 -->
-kaspeR: a*nother* s*afety* p*roviding* e*valuator* *in* R <img src="man/figures/logo.png" align="right" alt="" />
------------------------------------------------------------------------------------------------------------------
+kaspeR: another safety providing evaluator in R <img src="man/figures/logo.png" align="right" alt="" />
+-------------------------------------------------------------------------------------------------------
 
-[![](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental) [![](https://img.shields.io/badge/language-R-blue.svg)](https://cran.r-project.org/)
+[![](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental) [![](https://img.shields.io/badge/language-R-blue.svg)](https://cran.r-project.org/) [![](https://img.shields.io/badge/devel%20version-0.1.0-red.svg)](https://github.com/GregorDeCillia/kaspeR) [![](https://img.shields.io/github/languages/code-size/GregorDeCillia/kaspeR.svg)](https://github.com/GregorDeCillia/kaspeR)
 
 This package allows to safely evaluate strings in R using something more sophisticated than
 
@@ -96,10 +96,10 @@ myEvaluator$getWhiteList()
 
     ##  [1] "exp"      "log1p"    "trigamma" "cumprod"  "%%"       "log"     
     ##  [7] "atanh"    "sinh"     "tanpi"    "<"        "!="       "<="      
-    ## [13] "tan"      ">"        "lgamma"   "gamma"    "digamma"  "expm1"   
-    ## [19] "floor"    "log2"     "cos"      "abs"      "trunc"    "sqrt"    
-    ## [25] "x"        "cosh"     "cummax"   "asinh"    "sinpi"    "{"       
-    ## [31] "=="       "sin"      "atan"     "log10"    "acos"     "%/%"     
-    ## [37] "ceiling"  "("        "tanh"     "acosh"    "cospi"    "*"       
-    ## [43] "+"        "cumsum"   ">="       "-"        "<-"       "sign"    
-    ## [49] "asin"     "cummin"   "^"        "/"
+    ## [13] "function" "tan"      ">"        "lgamma"   "gamma"    "digamma" 
+    ## [19] "expm1"    "floor"    "log2"     "ls"       "cos"      "abs"     
+    ## [25] "trunc"    "sqrt"     "x"        "cosh"     "cummax"   "asinh"   
+    ## [31] "sinpi"    "{"        "=="       "sin"      "atan"     "log10"   
+    ## [37] "acos"     "%/%"      "ceiling"  "("        "tanh"     "acosh"   
+    ## [43] "cospi"    "*"        "+"        "cumsum"   ">="       "-"       
+    ## [49] "<-"       "sign"     "asin"     "cummin"   "^"        "/"

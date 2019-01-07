@@ -8,11 +8,13 @@ library(badger)
 
 <!-- icon: https://iconscout.com/icon/hot-soup-3 -->
 
-## kaspeR: a*nother* s*afety* p*roviding* e*valuator* *in* R <img src="man/figures/logo.png" align="right" alt="" />
+## kaspeR: another safety providing evaluator in R <img src="man/figures/logo.png" align="right" alt="" />
 
 
 `r badge_lifecycle("experimental")`
 `r badge_custom("language", "R", "blue", "https://cran.r-project.org/")`
+`r badge_github_version("GregorDeCillia/kaspeR", "red")`
+`r badge_code_size("GregorDeCillia/kaspeR")`
 
 This package allows to safely evaluate strings in R using something more sophisticated than
 
