@@ -1,9 +1,9 @@
 
 <!-- icon: https://iconscout.com/icon/hot-soup-3 -->
-kaspeR: another safety providing evaluator in R <img src="man/figures/logo.png" align="right" alt="" />
+kasper: another safety providing evaluator in R <img src="man/figures/logo.png" align="right" alt="" />
 -------------------------------------------------------------------------------------------------------
 
-[![](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental) [![](https://img.shields.io/badge/language-R-blue.svg)](https://cran.r-project.org/) [![](https://img.shields.io/badge/devel%20version-0.1.0-red.svg)](https://github.com/GregorDeCillia/kaspeR) [![](https://img.shields.io/github/languages/code-size/GregorDeCillia/kaspeR.svg)](https://github.com/GregorDeCillia/kaspeR)
+[![](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental) [![](https://img.shields.io/badge/language-R-blue.svg)](https://cran.r-project.org/) [![](https://img.shields.io/badge/devel%20version-0.1.0-red.svg)](https://github.com/GregorDeCillia/kasper) [![](https://img.shields.io/github/languages/code-size/GregorDeCillia/kasper.svg)](https://github.com/GregorDeCillia/kasper)
 
 This package allows to safely evaluate strings in R using something more sophisticated than
 
@@ -18,7 +18,7 @@ by applying a whitelisting logic. The "whitelist" contains safe commands which w
 
 ``` r
 ## install from github
-devtools::install_github("GregorDeCillia/kaspeR")
+devtools::install_github("GregorDeCillia/kasper")
 ```
 
 ### Usage
@@ -26,7 +26,7 @@ devtools::install_github("GregorDeCillia/kaspeR")
 Create a new evaluator with the `new()` method.
 
 ``` r
-library(kaspeR)
+library(kasper)
 myEvaluator <- evaluator$new()
 ```
 
@@ -94,12 +94,39 @@ To display all whitelisted commands, use `getWhiteList()`.
 myEvaluator$getWhiteList()
 ```
 
-    ##  [1] "exp"      "log1p"    "trigamma" "cumprod"  "%%"       "log"     
-    ##  [7] "atanh"    "sinh"     "tanpi"    "<"        "!="       "<="      
-    ## [13] "function" "tan"      ">"        "lgamma"   "gamma"    "digamma" 
-    ## [19] "expm1"    "floor"    "log2"     "ls"       "cos"      "abs"     
-    ## [25] "trunc"    "sqrt"     "x"        "cosh"     "cummax"   "asinh"   
-    ## [31] "sinpi"    "{"        "=="       "sin"      "atan"     "log10"   
-    ## [37] "acos"     "%/%"      "ceiling"  "("        "tanh"     "acosh"   
-    ## [43] "cospi"    "*"        "+"        "cumsum"   ">="       "-"       
-    ## [49] "<-"       "sign"     "asin"     "cummin"   "^"        "/"
+    ##  [1] "%/%"          ":"            "log"          "%%"          
+    ##  [5] "<"            "logical"      "tanh"         "log10"       
+    ##  [9] ">"            "[["           "tan"          "sinh"        
+    ## [13] "cumsum"       "{"            "log2"         "abs"         
+    ## [17] "acos"         "=="           "ceiling"      "character"   
+    ## [21] "tanpi"        "log1p"        "atanh"        "data.frame"  
+    ## [25] "numeric"      "exp"          "asin"         "sign"        
+    ## [29] "function"     "asinh"        "sinpi"        "ls"          
+    ## [33] "!="           "digamma"      "sqrt"         "cumprod"     
+    ## [37] "trigamma"     "subset"       ">="           "floor"       
+    ## [41] "lgamma"       "atan"         "[.data.frame" "["           
+    ## [45] "trunc"        "<-"           "^"            "("           
+    ## [49] "list"         "*"            "cosh"         "c"           
+    ## [53] "+"            "-"            "cummax"       "cos"         
+    ## [57] "/"            "expm1"        "cummin"       "integer"     
+    ## [61] "letters"      "cospi"        "sin"          "LETTERS"     
+    ## [65] "acosh"        "<="           "gamma"        "print"
+
+### dplyr
+
+The evaluator can add minimal support for `dplyr` operations by setting the `dplyr` flag to `TRUE` after loading the package
+
+``` r
+library(dplyr)
+```
+
+``` r
+myEvaluator <- evaluator$new(dplyr = TRUE)
+myEvaluator$eval("data.frame(a = 1:4, b = letters[1:4]) %>% filter(a < 3)")
+myEvaluator$replay()
+```
+
+    ## > data.frame(a = 1:4, b = letters[1:4]) %>% filter(a < 3)
+    ##   a b
+    ## 1 1 a
+    ## 2 2 b

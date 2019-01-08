@@ -4,15 +4,18 @@
 evaluator <- R6::R6Class(
   "evaluator",
   public = list(
-    initialize = function() {
-      private$save_env <- createSafeEnvironment()
+    initialize = function(...) {
+      private$safe_env <- createSafeEnvironment(...)
     },
     eval = function(str) {
       if (is.expression(str))
         str <- deparse(str)
        paste(
         capture.output(
-          private$res <-evaluate::evaluate(str, envir = private$save_env)
+          private$res <-evaluate::evaluate(
+            str,
+            envir = new.env(emptyenv(), parent = private$safe_env)
+          )
         ),
         sep = "\n"
       )
@@ -22,11 +25,14 @@ evaluator <- R6::R6Class(
       evaluate::replay(private$res)
     },
     getWhiteList = function() {
-      names(private$save_env)
+      names(private$safe_env)
+    },
+    appendSymbol = function(x, package) {
+      appendSymbol(private$safe_env, x, package)
     }
   ),
   private = list(
     res = NULL,
-    save_env = NULL
+    safe_env = NULL
   )
 )

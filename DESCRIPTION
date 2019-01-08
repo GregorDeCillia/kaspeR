@@ -1,12 +1,16 @@
-Package: kaspeR
+Package: kasper
 Type: Package
 Title: Another Safety Providing Evaluator in R
 Version: 0.1.0
 Author: Gregor de Cillia
+Authors@R: person("Gregor", "de Cillia", email = "de.cillia.gregor@gmail.com",
+                  role = c("aut", "cre"))
 Maintainer: Gregor de Cillia <de.cillia.gregor@gmail.com>
 Description: This package allows to safely evaluate strings in R.
-Imports: R6, evaluate
+Imports: R6, evaluate, methods
 License: MIT + file LICENSE
+URL: https://github.com/GregorDeCillia/kaspeR
+BugReports: https://github.com/GregorDeCillia/kaspeR/issues
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 6.1.1
