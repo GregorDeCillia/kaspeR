@@ -7,7 +7,7 @@ Authors@R: person("Gregor", "de Cillia", email = "de.cillia.gregor@gmail.com",
                   role = c("aut", "cre"))
 Maintainer: Gregor de Cillia <de.cillia.gregor@gmail.com>
 Description: This package allows to safely evaluate strings in R.
-Imports: R6, evaluate, methods
+Imports: R6, evaluate, methods, dplyr
 License: MIT + file LICENSE
 URL: https://github.com/GregorDeCillia/kaspeR
 BugReports: https://github.com/GregorDeCillia/kaspeR/issues
