@@ -8,11 +8,10 @@ evaluator <- R6::R6Class(
       private$safe_env <- createSafeEnvironment(...)
     },
     eval = function(str) {
-      if (is.expression(str))
-        str <- deparse(str)
-       paste(
+      str <- exprToString(substitute(str))
+      paste(
         capture.output(
-          private$res <-evaluate::evaluate(
+          private$res <- evaluate::evaluate(
             str,
             envir = new.env(emptyenv(), parent = private$safe_env)
           )
