@@ -8,13 +8,13 @@ library(badger)
 
 <!-- icon: https://iconscout.com/icon/hot-soup-3 -->
 
-## kaspeR: another safety providing evaluator in R <img src="man/figures/logo.png" align="right" alt="" />
+## kasper: another safety providing evaluator in R <img src="man/figures/logo.png" align="right" alt="" />
 
 
 `r badge_lifecycle("experimental")`
 `r badge_custom("language", "R", "blue", "https://cran.r-project.org/")`
-`r badge_github_version("GregorDeCillia/kaspeR", "red")`
-`r badge_code_size("GregorDeCillia/kaspeR")`
+`r badge_github_version("GregorDeCillia/kasper", "red")`
+`r badge_code_size("GregorDeCillia/kasper")`
 
 This package allows to safely evaluate strings in R using something more sophisticated than
 
@@ -25,51 +25,50 @@ eval(parse(text = code))
 
 by applying a whitelisting logic. The "whitelist" contains
 safe commands which won't be able to hurt your system when
-the `code` is sent by a client.
+the `code` is sent by a client. This package was developed for usage in a shiny
+web application that aims to give users access to an editor where they can 
+execute R scripts on a server. In order to secure the server, this package is supposed to be used in the future.
 
 ### Installation
 
 ```{r, eval = FALSE}
 ## install from github
-devtools::install_github("GregorDeCillia/kaspeR")
+devtools::install_github("GregorDeCillia/kasper")
 ```
 
 ### Usage
 
-Create a new evaluator with the `new()` method.
+Create a new evaluator with `evaluator$new()`. This will initialize a new evaluator
+object.
 
 ```{r}
-library(kaspeR)
+library(kasper)
 myEvaluator <- evaluator$new()
 ```
 
-Evaluate strings with the `eval()` method.
+The evaluator object has a method `eval()`, which evaluates R code passed as a string or as an expression.
 
 ```{r}
-myEvaluator$eval("
-x <- 1
-x <- x + 1
-x
-x - 1
-")
+myEvaluator$eval({
+  x <- 1; x <- x + 1; x; x - 1
+})
 ```
 
-No outputs? Don't worry they are all captured in the `myEvaluator` object.
+There are no outputs? Don't worry they are all captured in the `myEvaluator` object and can be retrieved with `replay()`. The method is named after the underlying function `evaluate::replay` which was developed by the `r-lib` organization.
 
 ```{r}
 myEvaluator$replay()
 ```
 
+If your R code contains any errors, error messages will be returned by the `replay()` method. This does not interrupt the evaluation.
+
 ### Error handling
 
-Errors are just part of the output for the repay function. They will
+Errors are just part of the output for the `replay()` function. They will
 not interrupt the evaluation.
 
 ```{r}
-myEvaluator$eval("
-y
-2 + 2
-")
+myEvaluator$eval({ y; 2 + 2 })
 myEvaluator$replay()
 ```
 
@@ -86,7 +85,29 @@ myEvaluator$replay()
 To display all whitelisted commands, use `getWhiteList()`.
 
 ```{r}
-myEvaluator$getWhiteList()
+head(myEvaluator$getWhiteList())
 ```
 
+### dplyr
 
+The evaluator can add minimal support for `dplyr` operations by setting the
+`dplyr` flag to `TRUE` after loading the package
+
+```{r, warning=FALSE, message=FALSE}
+library(dplyr)
+```
+
+```{r}
+myEvaluator <- evaluator$new(dplyr = TRUE)
+myEvaluator$eval({
+  data.frame(a = 1:4, b = letters[1:4]) %>% filter(a < 3)
+})
+myEvaluator$replay()
+```
+
+### Similar projects
+
+* See https://github.com/rapporter/sandboxR for an evaluator that uses a 
+  blacklisting logic to safely evaluate R expressons.
+* See https://github.com/jeroen/RAppArmor for a package that relies on
+  AppArmor to provide protection for Linux systems.
