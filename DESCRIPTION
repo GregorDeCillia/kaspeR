@@ -1,7 +1,7 @@
 Package: kasper
 Type: Package
 Title: Another Safety Providing Evaluator in R
-Version: 0.1.0
+Version: 0.2.0
 Author: Gregor de Cillia
 Authors@R: person("Gregor", "de Cillia", email = "de.cillia.gregor@gmail.com",
                   role = c("aut", "cre"))
