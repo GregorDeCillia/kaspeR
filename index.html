@@ -110,12 +110,10 @@
 ## [1] 2
 ## &gt; x - 1
 ## [1] 1</code></pre>
+<div id="error-handling" class="section level4">
+<h4 class="hasAnchor">
+<a href="#error-handling" class="anchor"></a>Error handling</h4>
 <p>If your R code contains any errors, error messages will be returned by the <code>replay()</code> method. This does not interrupt the evaluation.</p>
-</div>
-<div id="error-handling" class="section level3">
-<h3 class="hasAnchor">
-<a href="#error-handling" class="anchor"></a>Error handling</h3>
-<p>Errors are just part of the output for the <code>replay()</code> function. They will not interrupt the evaluation.</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1">myEvaluator<span class="op">$</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/eval">eval</a></span>({ y; <span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span> })</a>
 <a class="sourceLine" id="cb7-2" data-line-number="2">myEvaluator<span class="op">$</span><span class="kw">replay</span>()</a></code></pre></div>
 <pre><code>## &gt; y</code></pre>
@@ -123,9 +121,9 @@
 <pre><code>## &gt; 2 + 2
 ## [1] 4</code></pre>
 </div>
-<div id="the-whitelist" class="section level3">
-<h3 class="hasAnchor">
-<a href="#the-whitelist" class="anchor"></a>The whitelist</h3>
+<div id="the-whitelist" class="section level4">
+<h4 class="hasAnchor">
+<a href="#the-whitelist" class="anchor"></a>The whitelist</h4>
 <p>An error also occurs if the user try to perform anything that is not whitelisted. Functions like <code><a href="https://www.rdocumentation.org/packages/base/topics/system">system()</a></code> are not available and trated as though they do not exist.</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1">myEvaluator<span class="op">$</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/eval">eval</a></span>(<span class="st">"system('mkdir testdir')"</span>)</a>
 <a class="sourceLine" id="cb11-2" data-line-number="2">myEvaluator<span class="op">$</span><span class="kw">replay</span>()</a></code></pre></div>
@@ -135,20 +133,20 @@
 <div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/head">head</a></span>(myEvaluator<span class="op">$</span><span class="kw">getWhiteList</span>())</a></code></pre></div>
 <pre><code>## [1] "%/%"     ":"       "log"     "%%"      "logical" "&lt;"</code></pre>
 </div>
-<div id="dplyr" class="section level3">
-<h3 class="hasAnchor">
-<a href="#dplyr" class="anchor"></a>dplyr</h3>
-<p>The evaluator can add minimal support for <code>dplyr</code> operations by setting the <code>dplyr</code> flag to <code>TRUE</code> after loading the package</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(dplyr)</a></code></pre></div>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" data-line-number="1">myEvaluator &lt;-<span class="st"> </span>evaluator<span class="op">$</span><span class="kw">new</span>(<span class="dt">dplyr =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb17-2" data-line-number="2">myEvaluator<span class="op">$</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/eval">eval</a></span>({</a>
-<a class="sourceLine" id="cb17-3" data-line-number="3">  <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/data.frame">data.frame</a></span>(<span class="dt">a =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">4</span>, <span class="dt">b =</span> letters[<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>]) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(a <span class="op">&lt;</span><span class="st"> </span><span class="dv">3</span>)</a>
-<a class="sourceLine" id="cb17-4" data-line-number="4">})</a>
-<a class="sourceLine" id="cb17-5" data-line-number="5">myEvaluator<span class="op">$</span><span class="kw">replay</span>()</a></code></pre></div>
+<div id="dplyr" class="section level4">
+<h4 class="hasAnchor">
+<a href="#dplyr" class="anchor"></a>dplyr</h4>
+<p>The evaluator can add minimal support for <code>dplyr</code> operations by setting the <code>dplyr</code> flag to <code>TRUE</code>.</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" data-line-number="1">myEvaluator &lt;-<span class="st"> </span>evaluator<span class="op">$</span><span class="kw">new</span>(<span class="dt">dplyr =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb16-2" data-line-number="2">myEvaluator<span class="op">$</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/eval">eval</a></span>({</a>
+<a class="sourceLine" id="cb16-3" data-line-number="3">  <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/data.frame">data.frame</a></span>(<span class="dt">a =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">4</span>, <span class="dt">b =</span> letters[<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>]) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/filter">filter</a></span>(a <span class="op">&lt;</span><span class="st"> </span><span class="dv">3</span>)</a>
+<a class="sourceLine" id="cb16-4" data-line-number="4">})</a>
+<a class="sourceLine" id="cb16-5" data-line-number="5">myEvaluator<span class="op">$</span><span class="kw">replay</span>()</a></code></pre></div>
 <pre><code>## &gt; data.frame(a = 1:4, b = letters[1:4]) %&gt;% filter(a &lt; 3)
 ##   a b
 ## 1 1 a
 ## 2 2 b</code></pre>
+</div>
 </div>
 <div id="similar-projects" class="section level3">
 <h3 class="hasAnchor">
