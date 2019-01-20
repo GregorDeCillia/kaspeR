@@ -7,5 +7,8 @@ matrix:
   - r: release
     r_github_packages:
     - r-lib/covr
+    - jimhester/lintr
     after_success:
+    - R CMD INSTALL $PKG_TARBALL
     - Rscript -e 'covr::codecov()'
+    - Rscript -e 'lintr::lint_package()'
