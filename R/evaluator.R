@@ -1,5 +1,6 @@
 #' evaluate strings
 #'
+#' @importFrom ggplot2 is.ggplot
 #' @export
 evaluator <- R6::R6Class(
   "evaluator",

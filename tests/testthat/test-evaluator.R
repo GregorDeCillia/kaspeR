@@ -24,7 +24,6 @@ test_that("eval string", {
 })
 
 test_that("dplyr", {
-  library(dplyr)
   my_evaluator <- evaluator$new(dplyr = TRUE)
   my_evaluator$eval({
     data.frame(a = 1:4, b = letters[1:4]) %>%
@@ -62,7 +61,6 @@ test_that("plot", {
   ## use new_device = TRUE because devtools::check() uses some
   ## kind of NULL device which prevents plots from being captured
 
-  library(ggplot2)
   my_evaluator <- evaluator$new(plot = TRUE)
   my_evaluator$appendSymbol("mtcars", "datasets")
 

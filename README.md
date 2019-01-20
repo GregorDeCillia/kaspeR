@@ -51,11 +51,9 @@ myEvaluator$replay()
     ## > x - 1
     ## [1] 1
 
+#### Error handling
+
 If your R code contains any errors, error messages will be returned by the `replay()` method. This does not interrupt the evaluation.
-
-### Error handling
-
-Errors are just part of the output for the `replay()` function. They will not interrupt the evaluation.
 
 ``` r
 myEvaluator$eval({ y; 2 + 2 })
@@ -69,7 +67,7 @@ myEvaluator$replay()
     ## > 2 + 2
     ## [1] 4
 
-### The whitelist
+#### The whitelist
 
 An error also occurs if the user try to perform anything that is not whitelisted. Functions like `system()` are not available and trated as though they do not exist.
 
@@ -88,15 +86,11 @@ To display all whitelisted commands, use `getWhiteList()`.
 head(myEvaluator$getWhiteList())
 ```
 
-    ## [1] "%/%"     ":"       "log"     "%%"      "<"       "logical"
+    ## [1] "%/%"     ":"       "log"     "%%"      "logical" "<"
 
-### dplyr
+#### dplyr
 
-The evaluator can add minimal support for `dplyr` operations by setting the `dplyr` flag to `TRUE` after loading the package
-
-``` r
-library(dplyr)
-```
+The evaluator can add minimal support for `dplyr` operations by setting the `dplyr` flag to `TRUE`.
 
 ``` r
 myEvaluator <- evaluator$new(dplyr = TRUE)

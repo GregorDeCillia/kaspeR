@@ -2,4 +2,5 @@
 
 export(evaluator)
 importFrom(dplyr,"%>%")
+importFrom(ggplot2,is.ggplot)
 importFrom(methods,getGroupMembers)

@@ -1,5 +1,5 @@
 append_symbol <- function(env, x, package) {
-  env[[x]] <- get(x, paste0("package:", package))
+  env[[x]] <- eval(parse(text = paste0(package, "::`", x, "`")))
 }
 
 create_safe_environment <- function(dplyr = FALSE, plot = FALSE) {
