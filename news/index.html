@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Create a safe environment — create_safe_environment • kasper</title>
+<title>Changelog • kasper</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -39,9 +39,7 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="Create a safe environment — create_safe_environment" />
-
-<meta property="og:description" content="Creates an environment where the safe expressions are to be evaluated." />
+<meta property="og:title" content="Changelog" />
 
 <meta property="og:image" content="/logo.png" />
 <meta name="twitter:card" content="summary" />
@@ -61,7 +59,7 @@
   </head>
 
   <body>
-    <div class="container template-reference-topic">
+    <div class="container template-news">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -113,60 +111,57 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Create a safe environment</h1>
-    <small class="dont-index">Source: <a href='https://github.com/GregorDeCillia/kasper/blob/master/R/create_safe_environment.R'><code>R/create_safe_environment.R</code></a></small>
-    <div class="hidden name"><code>create_safe_environment.Rd</code></div>
+      <h1>Changelog <small></small></h1>
+      <small>Source: <a href='https://github.com/GregorDeCillia/kasper/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
-    <div class="ref-description">
-    
-    <p>Creates an environment where the safe expressions are to be evaluated.</p>
-    
-    </div>
-
-    <pre class="usage"><span class='fu'>create_safe_environment</span>(<span class='kw'>dplyr</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>plot</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
-    
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>dplyr</th>
-      <td><p>Load a collections of <code>dplyr</code> functions in the environment.</p></td>
-    </tr>
-    <tr>
-      <th>plot</th>
-      <td><p>Load a collection of <code>graphics</code> and <code>ggplot2</code> functions in the
-environment.</p></td>
-    </tr>
-    </table>
-    
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
-
-    <p>An environment that uses the empty environment (<code><a href='https://www.rdocumentation.org/packages/base/topics/environment'>emptyenv()</a></code>) as
-its parent. The environment serves as a "whitelist" to prevent users
-of <a href='evaluator.html'>evaluator</a><code>$eval()</code> to invoke malicious operations.</p>
-    
-
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>safe_env</span> <span class='kw'>&lt;-</span> <span class='fu'>create_safe_environment</span>()
-<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/eval'>eval</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/parse'>parse</a></span>(<span class='kw'>text</span> <span class='kw'>=</span> <span class='st'>"2 + 2"</span>), <span class='no'>safe_env</span>)</div><div class='output co'>#&gt; [1] 4</div><div class='input'>
-</div><span class='co'># NOT RUN {</span>
-<span class='co'>## trigger an error</span>
-<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/eval'>eval</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/parse'>parse</a></span>(<span class='kw'>text</span> <span class='kw'>=</span> <span class='st'>"system('mkdir(test)')"</span>), <span class='no'>safe_env</span>)
-<span class='co'># }</span><div class='input'>
-</div></pre>
+    <div id="kasper-0-2-0" class="section level1">
+<h1 class="page-header">
+<a href="#kasper-0-2-0" class="anchor"></a>kasper 0.2.0</h1>
+<ul>
+<li><code>export create_safe_environment()</code></li>
+<li>add roxygen documentation</li>
+<li>capture plots
+<ul>
+<li>minimal ggplot support</li>
+</ul>
+</li>
+<li>capture errors and warnings</li>
+<li>set up unit tests</li>
+</ul>
+</div>
+    <div id="kasper-0-1-0" class="section level1">
+<h1 class="page-header">
+<a href="#kasper-0-1-0" class="anchor"></a>kasper 0.1.0</h1>
+<ul>
+<li>devtools::check() via appveyor</li>
+<li>safe evaluation via an enclosed environment: <a href="https://stackoverflow.com/questions/18369913/safely-evaluating-arithmetic-expressions-in-r/18391779<a href='https://github.com/GregorDeCillia/kasper/issues/18391779'>#18391779</a>">concept from hadley</a>
+<ul>
+<li>dplyr support</li>
+</ul>
+</li>
+<li>set up travis-CI
+<ul>
+<li><code><a href="https://www.rdocumentation.org/packages/devtools/topics/check">devtools::check()</a></code></li>
+<li><code><a href="https://www.rdocumentation.org/packages/devtools/topics/lint">devtools::lint()</a></code></li>
+<li><code>pkgdown::deploy_site()</code></li>
+<li><code><a href="https://www.rdocumentation.org/packages/covr/topics/package_coverage">covr::package_coverage()</a></code></li>
+</ul>
+</li>
+</ul>
+</div>
   </div>
+
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <h2>Contents</h2>
-    <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
-      
-      <li><a href="#value">Value</a></li>
-      
-      <li><a href="#examples">Examples</a></li>
-    </ul>
-
+    <div id="tocnav">
+      <h2>Contents</h2>
+      <ul class="nav nav-pills nav-stacked">
+        <li><a href="#kasper-0-2-0">0.2.0</a></li>
+        <li><a href="#kasper-0-1-0">0.1.0</a></li>
+      </ul>
+    </div>
   </div>
+
 </div>
 
       <footer>
