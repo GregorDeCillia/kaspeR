@@ -9,6 +9,7 @@ matrix:
     - r-lib/covr
     - jimhester/lintr
     - r-lib/pkgdown
+    - GuangchuangYu/badger
     after_success:
     - R CMD INSTALL $PKG_TARBALL
     - Rscript -e 'covr::codecov()'
