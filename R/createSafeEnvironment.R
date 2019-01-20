@@ -1,11 +1,11 @@
-appendSymbol <- function(env, x, package) {
+append_symbol <- function(env, x, package) {
   env[[x]] <- get(x, paste0("package:", package))
 }
 
-createSafeEnvironment <- function(dplyr = FALSE) {
+create_safe_environment <- function(dplyr = FALSE) {
   safe_env <- new.env(parent = emptyenv())
-  appendBaseOperations(safe_env)
+  append_base_operations(safe_env)
   if (dplyr)
-    appendDplyrOperations(safe_env)
+    append_dplyr_operations(safe_env)
   safe_env
 }

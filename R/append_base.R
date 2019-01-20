@@ -1,5 +1,5 @@
 #' @importFrom methods getGroupMembers
-appendBaseOperations <- function(env) {
+append_base_operations <- function(env) {
   safe_f <- c(
     ## operations and math
     getGroupMembers("Math"),
@@ -16,6 +16,6 @@ appendBaseOperations <- function(env) {
     "print", "subset"
   )
   for (f in safe_f) {
-    appendSymbol(env, f, "base")
+    append_symbol(env, f, "base")
   }
 }

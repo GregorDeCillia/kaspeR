@@ -5,10 +5,10 @@ evaluator <- R6::R6Class(
   "evaluator",
   public = list(
     initialize = function(...) {
-      private$safe_env <- createSafeEnvironment(...)
+      private$safe_env <- create_safe_environment(...)
     },
     eval = function(str) {
-      str <- exprToString(substitute(str))
+      str <- expr_to_string(substitute(str))
       paste(
         capture.output(
           private$res <- evaluate::evaluate(
@@ -27,7 +27,7 @@ evaluator <- R6::R6Class(
       names(private$safe_env)
     },
     appendSymbol = function(x, package) {
-      appendSymbol(private$safe_env, x, package)
+      append_symbol(private$safe_env, x, package)
     }
   ),
   private = list(
