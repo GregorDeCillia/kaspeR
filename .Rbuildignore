@@ -3,6 +3,7 @@
 ^codecov\.yml$
 ^\.travis\.yml$
 ^docs$
+^pkgdown$
 ^LICENSE\.md$
 ^.*\.Rproj$
 ^\.Rproj\.user$
