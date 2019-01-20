@@ -89,11 +89,11 @@ test_that("plot", {
 context("user env")
 
 test_that("user_env", {
-  myEvaluator <- evaluator$new()
-  myEvaluator$eval("x <- 2")
-  expect_identical(dim(myEvaluator$getUserEnv()), c(1L, 2L))
-  myEvaluator$eval("a <- 1", reset_env = FALSE)
-  expect_identical(myEvaluator$getUserEnv()$name, c("x", "a"))
-  myEvaluator$eval("a <- FALSE")
-  expect_identical(myEvaluator$getUserEnv()$class, "logical")
+  my_evaluator <- evaluator$new()
+  my_evaluator$eval("x <- 2")
+  expect_identical(dim(my_evaluator$getUserEnv()), c(1L, 2L))
+  my_evaluator$eval("a <- 1", reset_env = FALSE)
+  expect_identical(my_evaluator$getUserEnv()$name, c("x", "a"))
+  my_evaluator$eval("a <- FALSE")
+  expect_identical(my_evaluator$getUserEnv()$class, "logical")
 })
