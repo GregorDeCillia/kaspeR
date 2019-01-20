@@ -55,3 +55,33 @@ test_that("getWhiteList", {
   my_evaluator$appendSymbol("system", "base")
   expect_true("system" %in% my_evaluator$getWhiteList())
 })
+
+context("plot")
+
+test_that("plot", {
+  ## use new_device = TRUE because devtools::check() uses some
+  ## kind of NULL device which prevents plots from being captured
+
+  library(ggplot2)
+  my_evaluator <- evaluator$new(plot = TRUE)
+  my_evaluator$appendSymbol("mtcars", "datasets")
+
+  ## ggplot
+  my_evaluator$eval(new_device = TRUE, {
+    ggplot(mtcars, aes(wt, cyl)) +
+      geom_point()
+    NULL
+  })
+  expect_true(my_evaluator$hasPlot())
+  expect_true(inherits(my_evaluator$plot, "ggplot"))
+
+  ## no plot
+  my_evaluator$eval("2+2", new_device = TRUE)
+  expect_false(my_evaluator$hasPlot())
+  expect_null(my_evaluator$plot)
+
+  ## base graphics
+  my_evaluator$eval(plot(1:10), new_device = TRUE)
+  expect_true(my_evaluator$hasPlot())
+  expect_false(inherits(my_evaluator$plot, "ggplot"))
+})
