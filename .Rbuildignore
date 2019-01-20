@@ -1,3 +1,7 @@
+^\.covrignore$
+^codecov\.yml$
+^\.travis\.yml$
+^docs$
 ^LICENSE\.md$
 ^.*\.Rproj$
 ^\.Rproj\.user$

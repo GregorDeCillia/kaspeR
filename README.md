@@ -3,7 +3,7 @@
 kasper: another safety providing evaluator in R <img src="man/figures/logo.png" align="right" alt="" />
 -------------------------------------------------------------------------------------------------------
 
-[![](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental) [![](https://img.shields.io/badge/language-R-blue.svg)](https://cran.r-project.org/) [![](https://img.shields.io/badge/devel%20version-0.1.0-red.svg)](https://github.com/GregorDeCillia/kasper) [![](https://img.shields.io/github/languages/code-size/GregorDeCillia/kasper.svg)](https://github.com/GregorDeCillia/kasper)
+[![](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental) [![](https://img.shields.io/badge/language-R-blue.svg)](https://cran.r-project.org/) [![](https://img.shields.io/badge/devel%20version-0.1.0-red.svg)](https://github.com/GregorDeCillia/kasper) [![](https://img.shields.io/github/languages/code-size/GregorDeCillia/kasper.svg)](https://github.com/GregorDeCillia/kasper) [![](https://travis-ci.org/GregorDeCillia/kaspeR.svg?branch=master)](https://travis-ci.org/GregorDeCillia/kaspeR) [![Codecov test coverage](https://codecov.io/gh/GregorDeCillia/kaspeR/branch/master/graph/badge.svg)](https://codecov.io/gh/GregorDeCillia/kaspeR?branch=master)
 
 This package allows to safely evaluate strings in R using something more sophisticated than
 
