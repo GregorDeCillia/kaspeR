@@ -19,8 +19,6 @@ evaluator <- R6::R6Class(
             envir = private$user_env,
             output_handler = evaluate::new_output_handler(
               graphics = function(x) {
-                if (is.null(x))
-                  return(x)
                 last_plot <- ggplot2::last_plot()
                 if (is.null(last_plot)) {
                   private$last_plot <- x
