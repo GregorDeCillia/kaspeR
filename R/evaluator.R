@@ -10,10 +10,8 @@ evaluator <- R6::R6Class(
     },
     eval = function(str, new_device = FALSE, reset_env = TRUE) {
       str <- expr_to_string(substitute(str))
-      ggplot2::set_last_plot(NULL)
       if (reset_env || is.null(private$user_env))
         private$user_env <- new.env(emptyenv(), parent = private$safe_env)
-      private$last_plot <- NULL
       paste(
         capture.output(
           private$res <- evaluate::evaluate(
@@ -39,6 +37,12 @@ evaluator <- R6::R6Class(
     hasPlot = function() {
       !is.null(private$last_plot)
     },
+    hadError = function() {
+      !is.null(private$last_error)
+    },
+    hadWarning = function() {
+      !is.null(private$last_warning)
+    },
     getUserEnv = function() {
       env_table <- data.frame(
         name = names(private$user_env),
@@ -62,8 +66,7 @@ evaluator <- R6::R6Class(
   ),
   private = list(
     res = NULL,
-    safe_env = NULL,
-    last_plot = NULL,
-    user_env = NULL
+    safe_env = NULL, user_env = NULL,
+    last_plot = NULL, last_warning = NULL, last_error = NULL
   )
 )

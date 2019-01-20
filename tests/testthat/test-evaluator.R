@@ -39,9 +39,10 @@ test_that("system error", {
   my_evaluator$eval({
     system("mkdir testdir")
   })
-  capture.output(
-    expect_message(my_evaluator$replay(), "Error", fixed = TRUE)
-  )
+  expect_true(my_evaluator$hadError())
+  my_evaluator$appendSymbol("warning", "base")
+  my_evaluator$eval(warning("warn!"))
+  expect_true(my_evaluator$hadWarning())
 })
 
 context("whitelist")
