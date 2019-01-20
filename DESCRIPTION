@@ -9,8 +9,8 @@ Maintainer: Gregor de Cillia <de.cillia.gregor@gmail.com>
 Description: This package allows to safely evaluate strings in R.
 Imports: R6, evaluate, methods, dplyr
 License: MIT + file LICENSE
-URL: https://github.com/GregorDeCillia/kaspeR
-BugReports: https://github.com/GregorDeCillia/kaspeR/issues
+URL: https://github.com/GregorDeCillia/kasper
+BugReports: https://github.com/GregorDeCillia/kasper/issues
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 6.1.1
