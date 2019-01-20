@@ -7,7 +7,7 @@ append_base_operations <- function(env) {
     getGroupMembers("Compare"),
     ## misc
     "<-", "{", "(", "ls", "function", "c", ":", "letters", "LETTERS",
-    "cat",
+    "cat", "dim", "nrow", "ncol",
     ## types
     "numeric", "integer", "character", "logical", "data.frame",
     ## indexing
