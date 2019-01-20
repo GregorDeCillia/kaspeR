@@ -1,5 +1,62 @@
-#' evaluate strings
+#' Class for safe evaluation
 #'
+#' This R6 Class can be used to evaluate R expressions or R strings in a safe
+#' environment.
+#'
+#' @section Usage:
+#' \preformatted{
+#' evt <- evaluator$new(...)
+#' evt$eval(str, new_device = FALSE, reset_env = TRUE)
+#' evt$replay()
+#' # -------------------------------------------------- #
+#' evt$appendSymbol(x, env)
+#' evt$plot
+#' evt$getUserEnv()
+#' # -------------------------------------------------- #
+#' evt$hasPlot()
+#' evt$hadError()
+#' evt$hadWarning()
+#' }
+#' @section Arguments:
+#' - `...` Passed down to [create_safe_environment]
+#' - `str` A string or expression to evaluate
+#' - `new_device` See [evaluate::evaluate]
+#' - `reset_env` Should the user environment be reset?
+#' - `x` A string representing a symbol. Can be a function name or
+#'   an infix operator like `%>%`.
+#' - `env` The package where the symbol comes from.
+#' @section Methods:
+#' - `new()` iniitializes a new `evaluator` object.
+#' - `eval()` evaluates a string or expression in a safe environment.
+#' - `replay()` Uses [evaluate::replay()] to show the result of the
+#'   last `evaluate()` call.
+#' - `appendSymbol()` extends the safe environment by a function or
+#'   operator.
+#' - `getUserEnv()` Returns a tabular representation of the environment
+#'   created by the call to `$eval()`
+#' - `hasPlot()`, `hadError()` and `hadWarning()` are flags that can be used to
+#'   check wther the expression in `eval` produced a plot, error or warning.
+#' @section Fields:
+#' - `plot` is an active binding that replays the last plot using
+#'   [grDevices::replayPlot()]. In case of a `gplot`, a `ggplot` object
+#'   is returned.
+#' @name evaluator
+#' @examples
+#' ## create a new object
+#' evt <- evaluator$new()
+#'
+#' # evaluate a string and "replay" the result
+#' evt$eval("2 + 2")
+#' evt$replay()
+#'
+#' # evaluate an expression. Useful if code spans several lines
+#' evt$eval({
+#'   x <- 2 + 1
+#'   y <- x + 1
+#'   cat(x, y, sep = " ")
+#' })
+#' evt$replay()
+NULL
 #' @importFrom ggplot2 is.ggplot
 #' @export
 evaluator <- R6::R6Class(
