@@ -13,7 +13,7 @@ library(badger)
 `r badge_lifecycle("experimental")`
 `r badge_custom("language", "R", "blue", "https://cran.r-project.org/")`
 `r badge_github_version(color = "red")`
-`r badge_code_size("GregorDeCillia/kasper")`
+`r badge_code_size()`
 `r badge_travis()`
 [![Codecov test coverage](https://codecov.io/gh/GregorDeCillia/kaspeR/branch/master/graph/badge.svg)](https://codecov.io/gh/GregorDeCillia/kaspeR?branch=master)
  [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/GregorDeCillia/kasper?branch=master&svg=true)](https://ci.appveyor.com/project/GregorDeCillia/kasper)
