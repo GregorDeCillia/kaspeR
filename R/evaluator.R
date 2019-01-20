@@ -17,18 +17,7 @@ evaluator <- R6::R6Class(
           private$res <- evaluate::evaluate(
             str,
             envir = private$user_env,
-            output_handler = evaluate::new_output_handler(
-              graphics = function(x) {
-                last_plot <- ggplot2::last_plot()
-                if (is.null(last_plot)) {
-                  private$last_plot <- x
-                } else {
-                  private$last_plot <- last_plot
-                  ggplot2::set_last_plot(NULL)
-                }
-                return(NULL)
-              }
-            ),
+            output_handler = private$output_handler(),
             new_device = new_device
           )
         ),
