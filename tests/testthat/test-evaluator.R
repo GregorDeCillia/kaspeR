@@ -20,6 +20,7 @@ test_that("eval string", {
 context("error")
 
 test_that("system error", {
+  myEvaluator <- evaluator$new()
   myEvaluator$eval({ system('mkdir testdir') })
   capture.output(
     testthat::expect_message(myEvaluator$replay(), "Error", fixed = TRUE)
