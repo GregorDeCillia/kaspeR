@@ -85,3 +85,15 @@ test_that("plot", {
   expect_true(my_evaluator$hasPlot())
   expect_false(inherits(my_evaluator$plot, "ggplot"))
 })
+
+context("user env")
+
+test_that("user_env", {
+  myEvaluator <- evaluator$new()
+  myEvaluator$eval("x <- 2")
+  expect_identical(dim(myEvaluator$getUserEnv()), c(1L, 2L))
+  myEvaluator$eval("a <- 1", reset_env = FALSE)
+  expect_identical(myEvaluator$getUserEnv()$name, c("x", "a"))
+  myEvaluator$eval("a <- FALSE")
+  expect_identical(myEvaluator$getUserEnv()$class, "logical")
+})

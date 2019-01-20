@@ -41,7 +41,8 @@ evaluator <- R6::R6Class(
     getUserEnv = function() {
       env_table <- data.frame(
         name = names(private$user_env),
-        class = sapply(private$user_env, class)
+        class = sapply(private$user_env, class),
+        stringsAsFactors = FALSE
       )
       row.names(env_table) <- NULL
       env_table
