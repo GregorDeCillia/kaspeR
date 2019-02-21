@@ -88,7 +88,7 @@ head(myEvaluator$getWhiteList())
 
     ## [1] "%/%"     ":"       "log"     "%%"      "logical" "<"
 
-#### dplyr
+#### `dplyr`
 
 The evaluator can add minimal support for `dplyr` operations by setting the `dplyr` flag to `TRUE`.
 

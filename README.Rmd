@@ -88,7 +88,7 @@ To display all whitelisted commands, use `getWhiteList()`.
 head(myEvaluator$getWhiteList())
 ```
 
-#### dplyr
+#### `dplyr`
 
 The evaluator can add minimal support for `dplyr` operations by setting the
 `dplyr` flag to `TRUE`.
