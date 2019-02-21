@@ -127,7 +127,7 @@
 <div id="the-whitelist" class="section level4">
 <h4 class="hasAnchor">
 <a href="#the-whitelist" class="anchor"></a>The whitelist</h4>
-<p>An error also occurs if the user try to perform anything that is not whitelisted. Functions like <code><a href="https://www.rdocumentation.org/packages/base/topics/system">system()</a></code> are not available and trated as though they do not exist.</p>
+<p>An error also occurs if the user try to perform anything that is not whitelisted. Functions like <code><a href="https://www.rdocumentation.org/packages/base/topics/system">system()</a></code> are not available and treated as though they do not exist.</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1">myEvaluator<span class="op">$</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/eval">eval</a></span>(<span class="st">"system('mkdir testdir')"</span>)</a>
 <a class="sourceLine" id="cb11-2" data-line-number="2">myEvaluator<span class="op">$</span><span class="kw">replay</span>()</a></code></pre></div>
 <pre><code>## &gt; system('mkdir testdir')</code></pre>
@@ -155,7 +155,7 @@
 <h3 class="hasAnchor">
 <a href="#similar-projects" class="anchor"></a>Similar projects</h3>
 <ul>
-<li>See <a href="https://github.com/rapporter/sandboxR" class="uri">https://github.com/rapporter/sandboxR</a> for an evaluator that uses a blacklisting logic to safely evaluate R expressons.</li>
+<li>See <a href="https://github.com/rapporter/sandboxR" class="uri">https://github.com/rapporter/sandboxR</a> for an evaluator that uses a blacklisting logic to safely evaluate R expressions.</li>
 <li>See <a href="https://github.com/jeroen/RAppArmor" class="uri">https://github.com/jeroen/RAppArmor</a> for a package that relies on AppArmor to provide protection for Linux systems.</li>
 </ul>
 </div>

@@ -135,7 +135,7 @@ evt &lt;- evaluator$new(...)
 evt$eval(str, new_device = FALSE, reset_env = TRUE)
 evt$replay()
 # -------------------------------------------------- #
-evt$appendSymbol(x, env)
+evt$appendSymbol(x, package)
 evt$plot
 evt$getUserEnv()
 # -------------------------------------------------- #
@@ -150,27 +150,28 @@ evt$hadWarning()
     <ul>
 <li><p><code>...</code> Passed down to <a href='create_safe_environment.html'>create_safe_environment</a></p></li>
 <li><p><code>str</code> A string or expression to evaluate</p></li>
-<li><p><code>new_device</code> See <a href='https://www.rdocumentation.org/packages/evaluate/topics/evaluate'>evaluate::evaluate</a></p></li>
+<li><p><code>new_device</code> Whether to open an new graphics device for plots.
+See <a href='https://www.rdocumentation.org/packages/evaluate/topics/evaluate'>evaluate::evaluate</a></p></li>
 <li><p><code>reset_env</code> Should the user environment be reset?</p></li>
 <li><p><code>x</code> A string representing a symbol. Can be a function name or
 an infix operator like <code>%&gt;%</code>.</p></li>
-<li><p><code>env</code> The package where the symbol comes from.</p></li>
+<li><p><code>package</code> The package where the symbol comes from.</p></li>
 </ul>
     
     <h2 class="hasAnchor" id="methods"><a class="anchor" href="#methods"></a>Methods</h2>
 
     
     <ul>
-<li><p><code>new()</code> iniitializes a new <code>evaluator</code> object.</p></li>
+<li><p><code>new()</code> initializes a new <code>evaluator</code> object.</p></li>
 <li><p><code><a href='https://www.rdocumentation.org/packages/base/topics/eval'>eval()</a></code> evaluates a string or expression in a safe environment.</p></li>
-<li><p><code>replay()</code> Uses <code><a href='https://www.rdocumentation.org/packages/evaluate/topics/replay'>evaluate::replay()</a></code> to show the result of the
+<li><p><code>replay()</code> uses <code><a href='https://www.rdocumentation.org/packages/evaluate/topics/replay'>evaluate::replay()</a></code> to show the result of the
 last <code>evaluate()</code> call.</p></li>
 <li><p><code>appendSymbol()</code> extends the safe environment by a function or
 operator.</p></li>
 <li><p><code>getUserEnv()</code> Returns a tabular representation of the environment
 created by the call to <code>$eval()</code></p></li>
 <li><p><code>hasPlot()</code>, <code>hadError()</code> and <code>hadWarning()</code> are flags that can be used to
-check wther the expression in <code>eval</code> produced a plot, error or warning.</p></li>
+check whether the expression in <code>eval</code> produced a plot, error or warning.</p></li>
 </ul>
     
     <h2 class="hasAnchor" id="fields"><a class="anchor" href="#fields"></a>Fields</h2>
