@@ -10,10 +10,10 @@
 # kasper 0.1.0
 
 - devtools::check() via appveyor
-- safe evaluation via an enclosed environment: [concept from hadley](https://stackoverflow.com/questions/18369913/safely-evaluating-arithmetic-expressions-in-r/18391779#18391779)
+- safe evaluation via an enclosed environment: [concept from hadley](https://stackoverflow.com/a/18391779/4357017)
     - dplyr support
 - set up travis-CI
     - `devtools::check()` 
     - `devtools::lint()`
-    - `pkgdown::deploy_site()`
+    - `pkgdown::deploy_site_github()`
     - `covr::package_coverage()`

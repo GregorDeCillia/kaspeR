@@ -3,7 +3,7 @@
 kasper: another safety providing evaluator in R <img src="man/figures/logo.png" align="right" alt="" />
 -------------------------------------------------------------------------------------------------------
 
-[![](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental) [![](https://img.shields.io/badge/language-R-blue.svg)](https://cran.r-project.org/) [![](https://img.shields.io/badge/devel%20version-0.1.0-red.svg)](https://github.com/GregorDeCillia/kasper) [![](https://img.shields.io/github/languages/code-size/GregorDeCillia/kasper.svg)](https://github.com/GregorDeCillia/kasper) [![](https://travis-ci.org/GregorDeCillia/kasper.svg?branch=master)](https://travis-ci.org/GregorDeCillia/kasper) [![Codecov test coverage](https://codecov.io/gh/GregorDeCillia/kaspeR/branch/master/graph/badge.svg)](https://codecov.io/gh/GregorDeCillia/kaspeR?branch=master) [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/GregorDeCillia/kasper?branch=master&svg=true)](https://ci.appveyor.com/project/GregorDeCillia/kasper)
+[![](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental) [![](https://img.shields.io/badge/language-R-blue.svg)](https://cran.r-project.org/) [![](https://img.shields.io/badge/devel%20version-0.2.0-red.svg)](https://github.com/GregorDeCillia/kasper) [![](https://img.shields.io/github/languages/code-size/GregorDeCillia/kasper.svg)](https://github.com/GregorDeCillia/kasper) [![](https://travis-ci.org/GregorDeCillia/kasper.svg?branch=master)](https://travis-ci.org/GregorDeCillia/kasper) [![Codecov test coverage](https://codecov.io/gh/GregorDeCillia/kaspeR/branch/master/graph/badge.svg)](https://codecov.io/gh/GregorDeCillia/kaspeR?branch=master) [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/GregorDeCillia/kasper?branch=master&svg=true)](https://ci.appveyor.com/project/GregorDeCillia/kasper)
 
 This package allows to safely evaluate strings in R using something more sophisticated than
 
@@ -69,7 +69,7 @@ myEvaluator$replay()
 
 #### The whitelist
 
-An error also occurs if the user try to perform anything that is not whitelisted. Functions like `system()` are not available and trated as though they do not exist.
+An error also occurs if the user try to perform anything that is not whitelisted. Functions like `system()` are not available and treated as though they do not exist.
 
 ``` r
 myEvaluator$eval("system('mkdir testdir')")
@@ -107,5 +107,5 @@ myEvaluator$replay()
 
 ### Similar projects
 
--   See <https://github.com/rapporter/sandboxR> for an evaluator that uses a blacklisting logic to safely evaluate R expressons.
+-   See <https://github.com/rapporter/sandboxR> for an evaluator that uses a blacklisting logic to safely evaluate R expressions.
 -   See <https://github.com/jeroen/RAppArmor> for a package that relies on AppArmor to provide protection for Linux systems.

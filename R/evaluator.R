@@ -9,7 +9,7 @@
 #' evt$eval(str, new_device = FALSE, reset_env = TRUE)
 #' evt$replay()
 #' # -------------------------------------------------- #
-#' evt$appendSymbol(x, env)
+#' evt$appendSymbol(x, package)
 #' evt$plot
 #' evt$getUserEnv()
 #' # -------------------------------------------------- #
@@ -20,22 +20,23 @@
 #' @section Arguments:
 #' - `...` Passed down to [create_safe_environment]
 #' - `str` A string or expression to evaluate
-#' - `new_device` See [evaluate::evaluate]
+#' - `new_device` Whether to open an new graphics device for plots.
+#'   See [evaluate::evaluate]
 #' - `reset_env` Should the user environment be reset?
 #' - `x` A string representing a symbol. Can be a function name or
 #'   an infix operator like `%>%`.
-#' - `env` The package where the symbol comes from.
+#' - `package` The package where the symbol comes from.
 #' @section Methods:
-#' - `new()` iniitializes a new `evaluator` object.
+#' - `new()` initializes a new `evaluator` object.
 #' - `eval()` evaluates a string or expression in a safe environment.
-#' - `replay()` Uses [evaluate::replay()] to show the result of the
+#' - `replay()` uses [evaluate::replay()] to show the result of the
 #'   last `evaluate()` call.
 #' - `appendSymbol()` extends the safe environment by a function or
 #'   operator.
 #' - `getUserEnv()` Returns a tabular representation of the environment
 #'   created by the call to `$eval()`
 #' - `hasPlot()`, `hadError()` and `hadWarning()` are flags that can be used to
-#'   check wther the expression in `eval` produced a plot, error or warning.
+#'   check whether the expression in `eval` produced a plot, error or warning.
 #' @section Fields:
 #' - `plot` is an active binding that replays the last plot using
 #'   [grDevices::replayPlot()]. In case of a `gplot`, a `ggplot` object

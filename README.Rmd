@@ -75,7 +75,7 @@ myEvaluator$replay()
 #### The whitelist
 
 An error also occurs if the user try to perform anything that is not 
-whitelisted. Functions like `system()` are not available and trated as though they do not exist.
+whitelisted. Functions like `system()` are not available and treated as though they do not exist.
 
 ```{r}
 myEvaluator$eval("system('mkdir testdir')")
@@ -104,6 +104,6 @@ myEvaluator$replay()
 ### Similar projects
 
 * See https://github.com/rapporter/sandboxR for an evaluator that uses a 
-  blacklisting logic to safely evaluate R expressons.
+  blacklisting logic to safely evaluate R expressions.
 * See https://github.com/jeroen/RAppArmor for a package that relies on
   AppArmor to provide protection for Linux systems.
